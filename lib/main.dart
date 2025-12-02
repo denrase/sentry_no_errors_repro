@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = 'https://f053b4bba1216dbc7cca84f18d246b1c@o376011.ingest.us.sentry.io/4508958566055936';
+    },
+    appRunner: () => runApp(SentryWidget(child: const MyApp())),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -64,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      Sentry.captureException(StateError('This is a sample exception'));
     });
   }
 
