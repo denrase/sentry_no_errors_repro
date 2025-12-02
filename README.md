@@ -1,16 +1,23 @@
 # sentry_no_errors_repro
 
-A new Flutter project.
+- Minimal sentry setup
+- Cocoapods
+- captureError when + is pressed
 
-## Getting Started
+## Main
 
-This project is a starting point for a Flutter application.
+Implicit Strip Settings (No values set in projec.pbxproj)
 
-A few resources to get you started if this is your first Flutter project:
+![implicit_strip_all](implicit_strip_all.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Release
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `flutter run --release`
+- run and press '+' -> Shoud see issue on sentry.io
+
+### IPA
+
+- `flutter build ipa --release --export-method development`
+- `ios-deploy --bundle build/ios/ipa/sentry_no_errors_repro.ipa`
+- run and press '+' -> Shoud see issue on sentry.io
+
